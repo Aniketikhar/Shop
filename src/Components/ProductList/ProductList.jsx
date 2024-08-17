@@ -24,7 +24,7 @@ const ProductList = ({ products, loading }) => {
 
   return (
     <div>
-      <div className="w-[95%] md:w-[90%] lg:w-[80%] mx-auto py-5 flex flex-wrap justify-center">
+      <div className="w-[95%] md:w-[90%] lg:w-[80%] mx-auto py-2 flex flex-wrap justify-center">
         {currentListOfItems?.map((product) => {
           return <Product key={product.id} product={product} />;
         })}

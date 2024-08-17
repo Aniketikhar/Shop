@@ -32,9 +32,9 @@ const Navbar = () => {
   }, []);
   return (
     <div>
-      <div className="flex justify-between w-[95%] md:w-[90%] lg:w-[80%] mx-auto py-5">
+      <div className="flex justify-between items-center  w-[95%] md:w-[90%] lg:w-[80%] mx-auto py-4">
         <div>Shop</div>
-        <div>Log in as {user?.user.sub}</div>
+        <div className="text-center">Log in as {user?.user.sub}</div>
         <div>cart</div>
       </div>
     </div>

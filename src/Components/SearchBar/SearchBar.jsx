@@ -22,7 +22,7 @@ const SearchBar = ({ handleSearch , products }) => {
 
   return (
     <div>
-      <div className="w-[95%] md:w-[90%] lg:w-[80%] mx-auto my-4 border-2 px-4 rounded-3xl hover:border-black">
+      <div className="w-[95%] md:w-[90%] lg:w-[80%] mx-auto my-3 border-2 px-4 rounded-3xl hover:border-black">
         <form className="flex justify-between items-center" onSubmit={handleSubmit}>
           <input
             type="search"
