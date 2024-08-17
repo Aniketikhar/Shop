@@ -6,11 +6,11 @@ const Product = ({ product, theme }) => {
     return `${text.slice(0, maxLength)}...`;
   };
   return (
-    <div className="w-[10rem] md:w-[12rem] lg:w-[15rem] shadow m-2 lg:m-2  rounded-xl overflow-hidden">
-      <div className="flex relative justify-center bg-slate-100">
+    <div className={theme ? "bg-slate-800 w-[10rem] md:w-[12rem] lg:w-[15rem] shadow m-2 lg:m-2 rounded-xl overflow-hidden" : 'w-[10rem] md:w-[12rem] lg:w-[15rem] shadow m-2 lg:m-2 rounded-xl overflow-hidden'}>
+      <div className={theme ? " flex relative justify-center bg-slate-200" : "flex relative justify-center bg-slate-100"}>
         <img src={product.thumbnail} alt="" className=" h-36  " />
         <p
-          className="absolute right-1 bottom-3 text-sm p-1"
+          className={theme ? "text-black absolute right-1 bottom-3 text-sm p-1" : "absolute right-1 bottom-3 text-sm p-1"}
           style={{ transform: "rotate(320deg)" }}
         >
           $ {product.price}

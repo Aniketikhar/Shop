@@ -32,7 +32,7 @@ const lengthofPages = Math.round(lengthOfData / itemPerPage);
         return (
           <button
             key={item}
-            className={ item == currentPage ? "active-btn bg-orange-500 text-white border px-4 py-1 m-2": "page-btn bg-slate-200 px-2 py-1 m-2"}
+            className={ item == currentPage ? "active-btn bg-orange-500 text-white px-4 py-1 m-2": "page-btn bg-slate-200 px-2 py-1 m-2"}
             value={item}
             onClick={() => handleCurrentPage(item)}
           >
