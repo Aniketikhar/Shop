@@ -9,7 +9,6 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  
 
   console.log(email);
   console.log(password);
@@ -18,18 +17,20 @@ const Login = () => {
     e.preventDefault();
     try {
       if (email && password) {
-        const response = await axios.post(`https://intern-task-api.bravo68web.workers.dev/auth/login`, { email, password });
+        const response = await axios.post(
+          `https://intern-task-api.bravo68web.workers.dev/auth/login`,
+          { email, password }
+        );
 
         console.log("Log in successful", response.data.token);
 
         if (response) {
-          
-          sessionStorage.setItem("token", response.data.token)
+          sessionStorage.setItem("token", response.data.token);
           alert("Log In successful");
-          navigate('/products');
+          navigate("/products");
         } else {
           alert("Log in failed");
-          navigate('/login')
+          navigate("/login");
         }
       } else {
         console.log("fill the required email and password");
@@ -74,7 +75,9 @@ const Login = () => {
             value="Submit"
             className="w-full font-semibold hover:scale-105 bg-orange-500 rounded-md p-2 mb-1 text-white cursor-pointer"
           />
-          <p className="text-right text-sm mb-5 cursor-pointer">Forgot Password?</p>
+          <p className="text-right text-sm mb-5 cursor-pointer">
+            Forgot Password?
+          </p>
           <hr />
           <div className="flex justify-center mt-5">
             <div className="hover:scale-110 rounded-full border-2 m-2 p-2 border-gray-700 hover:bg-orange-500 hover:text-white cursor-pointer hover:border-orange-500">

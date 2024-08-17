@@ -2,10 +2,11 @@ import React, { useContext, useState } from "react";
 import Product from "../Product/Product";
 import { shopContext } from "../../Context/Context";
 import PaginationBar from "../PaginationBar/PaginationBar";
+import Loading from "../Loading/Loading";
 
 const ProductList = ({ products, loading }) => {
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   const itemPerPage = 8;
