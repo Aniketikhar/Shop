@@ -40,7 +40,7 @@ const Login = () => {
     }
   };
   return (
-    <div className=" bg-[#6D9AC4] mx-auto flex flex-col justify-center h-screen ">
+    <div className="login mx-auto flex flex-col justify-center h-screen ">
       <div className="w-[100%] md:w-[50%] lg:w-[35%] xl:w[30%] h-screen md:h-auto mx-auto border bg-white  md:rounded-lg shadow-md">
         <h1 className="text-center text-3xl font-bold mt-5">Log In</h1>
         <form className="p-10 " onSubmit={Login}>
@@ -53,6 +53,7 @@ const Login = () => {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <br />
           <label>Password</label>
@@ -64,10 +65,11 @@ const Login = () => {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <br />
           <label htmlFor="">
-            <input type="checkbox" name="remember" id="" className="mb-5" />
+            <input type="checkbox" name="remember" required className="mb-5" />
             <span> Remember me?</span>
           </label>
           <input

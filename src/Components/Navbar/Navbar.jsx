@@ -38,10 +38,13 @@ const Navbar = ({ handleTheme, handleUser, theme }) => {
   }, []);
   return (
     <div>
+      <div className={theme ? " text-center sm:hidden text-white bg-slate-600" : "text-center sm:hidden bg-slate-100"}>
+      <p className="py-2">Log in as {user?.user.sub}</p>
+      </div>
       <div
         className={
           theme
-            ? "text-white flex justify-between items-center  w-[97%] md:w-[94%] lg:w-[85%] mx-auto py-4"
+            ? "text-white flex justify-between items-center  w-[93%] md:w-[90%] lg:w-[85%] mx-auto py-4"
             : "flex justify-between items-center  w-[97%] md:w-[94%] lg:w-[85%] mx-auto py-4"
         }
       >
@@ -59,9 +62,7 @@ const Navbar = ({ handleTheme, handleUser, theme }) => {
           </div>
         </div>
       </div>
-      <div className="text-center sm:hidden">
-      Log in as {user?.user.sub}
-      </div>
+      
     </div>
   );
 };

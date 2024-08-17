@@ -35,7 +35,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className=" bg-[#6D9AC4] mx-auto flex flex-col justify-center h-screen ">
+    <div className=" signup mx-auto flex flex-col justify-center h-screen ">
       <div className="w-[100%] md:w-[50%] lg:w-[35%] xl:w[30%] h-screen md:h-auto mx-auto border bg-white md:rounded-lg shadow-md">
         <h1 className="text-center text-3xl font-bold mt-5">Sign Up</h1>
         <form className="p-10 " onSubmit={SignUp}>
