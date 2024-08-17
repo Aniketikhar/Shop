@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 
 const Products = () => {
   const [theme, setTheme] = useState(false);
+  const [userEmail, setUserEmail] = useState();
+
   const [products, setProducts] = useState([]);
   const [productData, setProductData] = useState();
   const [loading, setLoading] = useState(true);
@@ -17,6 +19,10 @@ const Products = () => {
 
   const handleTheme = () => {
     setTheme(!theme);
+  };
+
+  const handleUser = (user) => {
+    setUserEmail(user);
   }
 
   useEffect(() => {
@@ -40,7 +46,7 @@ const Products = () => {
           console.log("this is the", response.data);
         }
       } catch (error) {
-        navigate('/login');
+        navigate("/login");
         console.error("Error fetching products:", error);
       }
     };
@@ -48,18 +54,32 @@ const Products = () => {
     getProducts();
   }, [token]);
 
-  const handleSearch = (searchTerm) => {
-    const filterProducts = products.filter((product) =>
-      product.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setProducts(filterProducts);
+  const handleSearch = async(searchTerm) => {
+    setLoading(true)
+    if (searchTerm == "") {
+      setProducts(productData);
+      setLoading(false)
+      console.log("empty" , products);
+      console.log("empty" , productData);
+      return;
+    } else {
+      const filterProducts = await productData.filter((product) =>
+        product.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setProducts(filterProducts);
+      setLoading(false)
+    }
   };
 
   return (
-    <div className={ theme ? "bg-slate-900 " : ""}>
-      <Navbar handleTheme={handleTheme} theme={theme} />
-      <SearchBar handleSearch={handleSearch} products={productData} theme={theme} />
-      <ProductList products={products} loading={loading} theme={theme}/>
+    <div className={theme ? "bg-slate-900 " : ""}>
+      <Navbar handleTheme={handleTheme} theme={theme} handleUser={handleUser} />
+      <SearchBar
+        handleSearch={handleSearch}
+        products={productData}
+        theme={theme}
+      />
+      <ProductList products={products} loading={loading} theme={theme} userEmail={userEmail} />
     </div>
   );
 };

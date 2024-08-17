@@ -6,15 +6,13 @@ const SearchBar = ({ handleSearch, products, theme }) => {
 
   const handleChange = (e) => {
     setSearch(e.target.value);
-    handleSearch(search);
+    
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if(search == ""){
-    //   // alert("Please enter a search term");
-    //   return;
-    // }else{
+    handleSearch(search);
+    
   };
 
   return (

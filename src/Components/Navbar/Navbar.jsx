@@ -1,11 +1,13 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Navbar.css";
-import { PiShoppingCartSimpleBold } from "react-icons/pi";
+import Cart from "../Cart/Cart";
+import { shopContext } from "../../Context/Context";
 
-const Navbar = ({ handleTheme, theme }) => {
+const Navbar = ({ handleTheme, handleUser, theme }) => {
   const token = sessionStorage.getItem("token");
   const [user, setUser] = useState();
+
 
   useEffect(() => {
     const getUser = async () => {
@@ -21,6 +23,7 @@ const Navbar = ({ handleTheme, theme }) => {
 
         if (response.status === 200) {
           setUser(response.data);
+          handleUser(response.data.user.sub);
           console.log("User data:", response.data);
         } else {
           console.error("Failed to fetch user data:", response.statusText);
@@ -31,6 +34,7 @@ const Navbar = ({ handleTheme, theme }) => {
     };
 
     getUser();
+
   }, []);
   return (
     <div>
@@ -41,17 +45,17 @@ const Navbar = ({ handleTheme, theme }) => {
             : "flex justify-between items-center  w-[97%] md:w-[94%] lg:w-[85%] mx-auto py-4"
         }
       >
-        <div>Shop</div>
+        <div className="font-bold text-xl">Shopping</div>
         <div className="text-center">Log in as {user?.user.sub}</div>
         <div className="flex items-center">
           <div>
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" onChange={handleTheme} />
-              <span class="slider"></span>
+              <span className="slider"></span>
             </label>
           </div>
           <div className="ps-4 text-3xl">
-            <PiShoppingCartSimpleBold />
+            <Cart userEmail={user?.user.sub} theme={theme} />
           </div>
         </div>
       </div>

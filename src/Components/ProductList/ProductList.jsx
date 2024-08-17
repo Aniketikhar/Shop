@@ -4,7 +4,7 @@ import { shopContext } from "../../Context/Context";
 import PaginationBar from "../PaginationBar/PaginationBar";
 import Loading from "../Loading/Loading";
 
-const ProductList = ({ products, loading, theme }) => {
+const ProductList = ({ products, loading, theme , userEmail }) => {
   if (loading) {
     return <Loading />;
   }
@@ -32,7 +32,7 @@ const ProductList = ({ products, loading, theme }) => {
         }
       >
         {currentListOfItems?.map((product) => {
-          return <Product key={product.id} product={product} theme={theme} />;
+          return <Product key={product.id} product={product} theme={theme} userEmail={userEmail} />;
         })}
       </div>
       <PaginationBar
