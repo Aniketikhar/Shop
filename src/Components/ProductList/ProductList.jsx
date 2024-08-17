@@ -3,13 +3,10 @@ import Product from "../Product/Product";
 import { shopContext } from "../../Context/Context";
 import PaginationBar from "../PaginationBar/PaginationBar";
 
-const ProductList = ({products, loading}) => {
-
+const ProductList = ({ products, loading }) => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
-  
 
   const itemPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
@@ -22,7 +19,7 @@ const ProductList = ({products, loading}) => {
   const lastItem = currentPage * itemPerPage;
   const firstItem = lastItem - itemPerPage;
   const currentListOfItems = products?.slice(firstItem, lastItem);
-  console.log("current list",currentListOfItems);
+  console.log("current list", currentListOfItems);
 
   return (
     <div>
@@ -32,12 +29,12 @@ const ProductList = ({products, loading}) => {
         })}
       </div>
       <PaginationBar
-          lengthOfData={lengthOfData}
-          itemPerPage={itemPerPage}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          handleCurrentPage={handleCurrentPage}
-        />
+        lengthOfData={lengthOfData}
+        itemPerPage={itemPerPage}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        handleCurrentPage={handleCurrentPage}
+      />
     </div>
   );
 };
