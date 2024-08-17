@@ -46,7 +46,7 @@ const Navbar = ({ handleTheme, handleUser, theme }) => {
         }
       >
         <div className="font-bold text-xl">Shopping</div>
-        <div className="text-center">Log in as {user?.user.sub}</div>
+        <div className="text-center hidden sm:block">Log in as {user?.user.sub}</div>
         <div className="flex items-center">
           <div>
             <label className="switch">
@@ -58,6 +58,9 @@ const Navbar = ({ handleTheme, handleUser, theme }) => {
             <Cart userEmail={user?.user.sub} theme={theme} />
           </div>
         </div>
+      </div>
+      <div className="text-center sm:hidden">
+      Log in as {user?.user.sub}
       </div>
     </div>
   );
