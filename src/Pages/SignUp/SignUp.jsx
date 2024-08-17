@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "./SignUp.css";
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const navigate = useNavigate();
 
   console.log(email);
   console.log(password);
@@ -18,8 +20,9 @@ const SignUp = () => {
 
         console.log("SignUp successful", response);
 
-        if (response.data.result == "OK") {
+        if (response) {
           alert("SignUp successful");
+          navigate("/login")
         } else {
           alert("SignUp failed");
         }
