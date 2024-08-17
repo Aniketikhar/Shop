@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
 // import "./Pagination.css";
 
 const PaginationBar = ({
@@ -19,19 +20,19 @@ const lengthofPages = Math.round(lengthOfData / itemPerPage);
   }
 
   return (
-    <div className="mx-auto text-center">
+    <div className="mx-auto text-center pb-5 text-sm flex justify-center items-center">
       <button
-        className="page-btn p-2 m-2 bg-orange-500 "
+        className="page-btn  px-2 py-2 m-2 bg-slate-300 rounded-s-lg hover:text-white"
         onClick={() => handleCurrentPage(currentPage - 1)}
         disabled={currentPage === 1} 
       >
-        Prev
+       <FaAngleDoubleLeft />
       </button>
       {generatePageNo().map((item) => {
         return (
           <button
             key={item}
-            className={ item == currentPage ? "active-btn bg-orange-400 border py-2 px-4 m-2": "page-btn border py-2 px-4 m-2"}
+            className={ item == currentPage ? "active-btn bg-orange-500 text-white border px-4 py-1 m-2": "page-btn bg-slate-200 px-2 py-1 m-2"}
             value={item}
             onClick={() => handleCurrentPage(item)}
           >
@@ -40,11 +41,11 @@ const lengthofPages = Math.round(lengthOfData / itemPerPage);
         ); // onClick function to change page state
       })}
       <button
-        className="page-btn p-2 m-2 bg-orange-500"
+        className="page-btn px-2 py-2 m-2 bg-slate-300 rounded-e-lg hover:text-white"
         onClick={() => handleCurrentPage(currentPage + 1)}
         disabled={lengthofPages == currentPage }
       >
-        Next 
+        <FaAngleDoubleRight />
       </button>
     </div>
   );

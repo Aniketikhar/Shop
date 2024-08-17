@@ -8,12 +8,16 @@ import { shopContext } from "../../Context/Context";
 import { useNavigate } from "react-router-dom";
 
 const Products = () => {
+  const [theme, setTheme] = useState(false);
   const [products, setProducts] = useState([]);
   const [productData, setProductData] = useState();
-  const [pageLoading, setPageLoading] = useState(true);
   const [loading, setLoading] = useState(true);
   const token = sessionStorage.getItem("token");
   const navigate = useNavigate();
+
+  const handleTheme = () => {
+    setTheme(!theme);
+  }
 
   useEffect(() => {
     const getProducts = async () => {
@@ -52,10 +56,10 @@ const Products = () => {
   };
 
   return (
-    <div>
-      <Navbar />
-      <SearchBar handleSearch={handleSearch} products={productData} />
-      <ProductList products={products} loading={loading} />
+    <div className={ theme ? "bg-slate-900 " : ""}>
+      <Navbar handleTheme={handleTheme} theme={theme} />
+      <SearchBar handleSearch={handleSearch} products={productData} theme={theme} />
+      <ProductList products={products} loading={loading} theme={theme}/>
     </div>
   );
 };

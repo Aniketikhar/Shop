@@ -4,7 +4,7 @@ import { shopContext } from "../../Context/Context";
 import PaginationBar from "../PaginationBar/PaginationBar";
 import Loading from "../Loading/Loading";
 
-const ProductList = ({ products, loading }) => {
+const ProductList = ({ products, loading, theme }) => {
   if (loading) {
     return <Loading />;
   }
@@ -24,9 +24,15 @@ const ProductList = ({ products, loading }) => {
 
   return (
     <div>
-      <div className="w-[95%] md:w-[90%] lg:w-[80%] mx-auto py-2 flex flex-wrap justify-center">
+      <div
+        className={
+          theme
+            ? " text-white w-[97%] md:w-[94%] lg:w-[85%] mx-auto py-2 flex flex-wrap justify-center"
+            : "w-[97%] md:w-[94%] lg:w-[85%] mx-auto py-2 flex flex-wrap justify-center"
+        }
+      >
         {currentListOfItems?.map((product) => {
-          return <Product key={product.id} product={product} />;
+          return <Product key={product.id} product={product} theme={theme} />;
         })}
       </div>
       <PaginationBar
