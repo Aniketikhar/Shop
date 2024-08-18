@@ -5,11 +5,13 @@ import Products from './Pages/Products/Products'
 import SignUp from './Pages/SignUp/SignUp'
 import Login from './Pages/Login/Login'
 import NotFound from './Pages/NotFound/NotFound'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
 
   return (
     <>
+    <Toaster />
     <Routes>
       <Route path='/products' element={<Products /> } />
       <Route path='/' element={<SignUp /> } />

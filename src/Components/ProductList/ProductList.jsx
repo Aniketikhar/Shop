@@ -4,7 +4,7 @@ import { shopContext } from "../../Context/Context";
 import PaginationBar from "../PaginationBar/PaginationBar";
 import Loading from "../Loading/Loading";
 
-const ProductList = ({ products, loading, theme , userEmail }) => {
+const ProductList = ({ products, loading, theme, userEmail }) => {
   if (loading) {
     return <Loading />;
   }
@@ -31,17 +31,30 @@ const ProductList = ({ products, loading, theme , userEmail }) => {
             : "w-[97%] md:w-[94%] lg:w-[85%] mx-auto py-2 flex flex-wrap justify-center"
         }
       >
+        {currentListOfItems.length === 0 && (
+          <div className="text-center">No products found.</div>
+        )}
         {currentListOfItems?.map((product) => {
-          return <Product key={product.id} product={product} theme={theme} userEmail={userEmail} />;
+          return (
+            <Product
+              key={product.id}
+              product={product}
+              theme={theme}
+              userEmail={userEmail}
+            />
+          );
         })}
       </div>
-      <PaginationBar
-        lengthOfData={lengthOfData}
-        itemPerPage={itemPerPage}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        handleCurrentPage={handleCurrentPage}
-      />
+      {
+      products.length > 8 && 
+        <PaginationBar
+          lengthOfData={lengthOfData}
+          itemPerPage={itemPerPage}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          handleCurrentPage={handleCurrentPage}
+        />
+      }
     </div>
   );
 };
