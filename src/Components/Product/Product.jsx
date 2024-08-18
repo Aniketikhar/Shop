@@ -1,12 +1,7 @@
 import React, { useContext, useState } from "react";
-import { shopContext } from "../../Context/Context";
 import toast, { Toaster } from "react-hot-toast";
 
-
 const Product = ({ product, theme, userEmail }) => {
-  console.log("ye hai user email");
-  console.log(userEmail);
-
   const truncateText = (text, maxLength) => {
     if (text.length <= maxLength) return text;
     return `${text.slice(0, maxLength)}...`;
@@ -18,30 +13,23 @@ const Product = ({ product, theme, userEmail }) => {
       return;
     }
 
-    // Get the existing cart for the user from localStorage
     let userCart = JSON.parse(localStorage.getItem(`cart_${userEmail}`)) || [];
 
-    // Check if the product is already in the cart
     const existingProductIndex = userCart.findIndex(
       (item) => item.title === product.title
     );
 
     if (existingProductIndex >= 0) {
-      // If the product is already in the cart, increase the quantity
       userCart[existingProductIndex].quantity += 1;
     } else {
-      // If the product is not in the cart, add it
       userCart.push({ ...product, quantity: 1 });
     }
 
-    // Save the updated cart back to localStorage
     localStorage.setItem(`cart_${userEmail}`, JSON.stringify(userCart));
-
-    toast.success("Cart saved")
+    toast.success("Cart saved");
   };
   return (
     <>
-    
       <div
         className={
           theme

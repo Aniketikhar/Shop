@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { FaCartShopping } from "react-icons/fa6";
-import { PiShoppingCartLight, PiShoppingCartSimpleBold } from "react-icons/pi";
 
-const Cart = ({ userEmail , theme }) => {
+import { PiShoppingCartSimpleBold } from "react-icons/pi";
+
+const Cart = ({ userEmail, theme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    console.log("hey there user");
-
     if (userEmail) {
       // Fetch the cart from localStorage
       const userCart =
@@ -39,23 +37,35 @@ const Cart = ({ userEmail , theme }) => {
       <div>
         <button
           onClick={toggleDropdown}
-          className={theme ? "text-white inline-flex justify-between w-full  px-4 py-2  text-2xl": "inline-flex justify-between w-full  px-4 py-2  text-2xl text-gray-700"}
+          className={
+            theme
+              ? "text-white inline-flex justify-between w-full  px-4 py-2  text-2xl"
+              : "inline-flex justify-between w-full  px-4 py-2  text-2xl text-gray-700"
+          }
         >
           <PiShoppingCartSimpleBold />
         </button>
       </div>
 
       {isOpen && (
-        <div className="absolute right-0 z-10 mt-2 w-60 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className="absolute right-0 z-10 mt-2 w-72 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
           <div
-            className={theme ? "py-1 bg-slate-800 rounded text-white": "py-1 rounded text-gray-700"}
+            className={
+              theme
+                ? "py-1 bg-slate-800 rounded text-white"
+                : "py-1 rounded text-gray-700"
+            }
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="options-menu"
           >
             {cartItems.length == 0 && (
               <div
-                className={theme ? "flex px-4 py-2 text-sm  hover:bg-gray-700" : "flex px-4 py-2 text-sm  hover:bg-gray-200"}
+                className={
+                  theme
+                    ? "flex px-4 py-2 text-sm  hover:bg-gray-700"
+                    : "flex px-4 py-2 text-sm  hover:bg-gray-200"
+                }
                 role="menuitem"
               >
                 Add items to cart
@@ -64,19 +74,23 @@ const Cart = ({ userEmail , theme }) => {
             {cartItems?.map((item, index) => (
               <div
                 key={index}
-                className={theme ? "flex px-4 py-2 text-sm  hover:bg-gray-700" : "flex px-4 py-2 text-sm  hover:bg-gray-200"}
+                className={
+                  theme
+                    ? "flex px-4 py-2 text-sm  hover:bg-gray-700"
+                    : "flex px-4 py-2 text-sm  hover:bg-gray-200"
+                }
                 role="menuitem"
               >
-                <div>
+                <div className={theme ? "bg-slate-200" : ""}>
                   <img
                     src={item.thumbnail}
                     alt={item.name}
                     className="w-14 h-14 object-cover"
                   />
                 </div>
-                <div className="flex-1 ms-1">
+                <div className="flex-1 ms-2">
                   <div className="flex justify-between">
-                    <p title={item.title}>{truncateText(item.title, 10)}</p>
+                    <p title={item.title}>{truncateText(item.title, 18)}</p>
                     <p>${item.price}</p>
                   </div>
                   <div className="flex justify-between">

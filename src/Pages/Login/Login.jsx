@@ -2,18 +2,13 @@ import React, { useContext, useState } from "react";
 import "./Login.css";
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { shopContext } from "../../Context/Context";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
-  console.log(email);
-  console.log(password);
 
   const Login = async (e) => {
     e.preventDefault();
@@ -24,26 +19,22 @@ const Login = () => {
           { email, password }
         );
 
-        console.log("Log in successful", response.data.token);
-
         if (response.data.token) {
           sessionStorage.setItem("token", response.data.token);
           toast.success("Log In successful");
           navigate("/products");
         } else {
           toast.error("Email or password incorrect");
-          
         }
       } else {
         console.log("fill the required email and password");
       }
     } catch (error) {
-      console.error("Error in Login:", error);
+      toast("Error in Login:");
     }
   };
   return (
     <>
-    
       <div className="login mx-auto flex flex-col justify-center h-screen ">
         <div className="w-[100%] md:w-[50%] lg:w-[35%] xl:w[30%] h-screen md:h-auto mx-auto border bg-white  md:rounded-lg shadow-md">
           <h1 className="text-center text-3xl font-bold mt-5">Log In</h1>

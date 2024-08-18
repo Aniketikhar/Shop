@@ -6,13 +6,11 @@ const SearchBar = ({ handleSearch, products, theme }) => {
 
   const handleChange = (e) => {
     setSearch(e.target.value);
-    
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     handleSearch(search);
-    
   };
 
   return (
@@ -31,7 +29,11 @@ const SearchBar = ({ handleSearch, products, theme }) => {
           <input
             type="search"
             name=""
-            className={ theme ? "bg-slate-200 rounded-3xl p-2 flex-1  border-none outline-none" : "rounded-3xl p-2 flex-1  border-none outline-none"}
+            className={
+              theme
+                ? "bg-slate-200 rounded-3xl p-2 flex-1  border-none outline-none"
+                : "rounded-3xl p-2 flex-1  border-none outline-none"
+            }
             placeholder="search item"
             id=""
             list="data"

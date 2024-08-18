@@ -4,7 +4,6 @@ import Navbar from "../../Components/Navbar/Navbar";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 import ProductList from "../../Components/ProductList/ProductList";
 import axios from "axios";
-import { shopContext } from "../../Context/Context";
 import { useNavigate } from "react-router-dom";
 
 const Products = () => {
@@ -23,7 +22,7 @@ const Products = () => {
 
   const handleUser = (user) => {
     setUserEmail(user);
-  }
+  };
 
   useEffect(() => {
     const getProducts = async () => {
@@ -37,37 +36,31 @@ const Products = () => {
           }
         );
 
-        console.log("hey products");
-
         if (response) {
           setProducts(response.data);
           setProductData(response.data);
           setLoading(false);
-          console.log("this is the", response.data);
         }
       } catch (error) {
         navigate("/login");
-        console.error("Error fetching products:", error);
       }
     };
 
     getProducts();
   }, [token]);
 
-  const handleSearch = async(searchTerm) => {
-    setLoading(true)
+  const handleSearch = async (searchTerm) => {
+    setLoading(true);
     if (searchTerm == "") {
       setProducts(productData);
-      setLoading(false)
-      console.log("empty" , products);
-      console.log("empty" , productData);
+      setLoading(false);
       return;
     } else {
       const filterProducts = await productData.filter((product) =>
         product.title.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setProducts(filterProducts);
-      setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -79,7 +72,12 @@ const Products = () => {
         products={productData}
         theme={theme}
       />
-      <ProductList products={products} loading={loading} theme={theme} userEmail={userEmail} />
+      <ProductList
+        products={products}
+        loading={loading}
+        theme={theme}
+        userEmail={userEmail}
+      />
     </div>
   );
 };

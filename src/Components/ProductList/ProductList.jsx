@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import Product from "../Product/Product";
-import { shopContext } from "../../Context/Context";
 import PaginationBar from "../PaginationBar/PaginationBar";
 import Loading from "../Loading/Loading";
 
@@ -20,7 +19,6 @@ const ProductList = ({ products, loading, theme, userEmail }) => {
   const lastItem = currentPage * itemPerPage;
   const firstItem = lastItem - itemPerPage;
   const currentListOfItems = products?.slice(firstItem, lastItem);
-  console.log("current list", currentListOfItems);
 
   return (
     <div>

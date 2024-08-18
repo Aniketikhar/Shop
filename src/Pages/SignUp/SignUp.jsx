@@ -18,23 +18,23 @@ const SignUp = () => {
     const symbolPattern = /[@#$]/;
 
     if (password.length < minLength) {
-        return false; // Password is too short
+      return false;
     }
     if (!uppercasePattern.test(password)) {
-        return false; // No uppercase letter found
+      return false;
     }
     if (!lowercasePattern.test(password)) {
-        return false; // No lowercase letter found
+      return false;
     }
     if (!numberPattern.test(password)) {
-        return false; // No number found
+      return false;
     }
     if (!symbolPattern.test(password)) {
-        return false; // No special symbol found
+      return false;
     }
 
-    return true; // Password meets all criteria
-}
+    return true;
+  }
 
   const SignUp = async (e) => {
     e.preventDefault();
@@ -46,11 +46,9 @@ const SignUp = () => {
             { email, password }
           );
 
-          console.log("SignUp successful", response);
-
           if (response) {
-            toast.success("SignUp successful");
             navigate("/login");
+            toast.success("SignUp successful");
           } else {
             toast.error("SignUp failed");
           }
@@ -63,7 +61,7 @@ const SignUp = () => {
         toast.error("enter your email and password");
       }
     } catch (e) {
-      toast.error("Error in sign up:");
+      toast.error("Error in sign up");
     }
   };
 

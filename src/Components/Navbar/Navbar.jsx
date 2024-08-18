@@ -1,8 +1,7 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
 import Cart from "../Cart/Cart";
-import { shopContext } from "../../Context/Context";
 
 const Navbar = ({ handleTheme, handleUser, theme }) => {
   const token = sessionStorage.getItem("token");
@@ -24,7 +23,6 @@ const Navbar = ({ handleTheme, handleUser, theme }) => {
         if (response.status === 200) {
           setUser(response.data);
           handleUser(response.data.user.sub);
-          console.log("User data:", response.data);
         } else {
           console.error("Failed to fetch user data:", response.statusText);
         }
