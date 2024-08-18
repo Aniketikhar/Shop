@@ -72,7 +72,7 @@ const Products = () => {
   };
 
   return (
-    <div className={theme ? "bg-slate-900 " : ""}>
+    <div className={theme ? "bg-slate-900 min-h-screen" : "min-h-screen"}>
       <Navbar handleTheme={handleTheme} theme={theme} handleUser={handleUser} />
       <SearchBar
         handleSearch={handleSearch}

@@ -48,7 +48,7 @@ const Navbar = ({ handleTheme, handleUser, theme }) => {
             : "flex justify-between items-center  w-[97%] md:w-[94%] lg:w-[85%] mx-auto py-4"
         }
       >
-        <div className="font-bold text-xl">Shopping</div>
+        <div className="font-bold text-xl"><a href="/products">Shopping</a></div>
         <div className="text-center hidden sm:block">Log in as {user?.user.sub}</div>
         <div className="flex items-center">
           <div>
